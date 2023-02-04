@@ -1,0 +1,62 @@
+/**
+ * 9tkey用CSS
+ */
+
+:root {
+  /** JS側から操作する変数 */
+  --9t-center-x: 0px; /* ステップゾーンの中心座標(x) */
+  --9t-center-y: 0px; /* ステップゾーンの中心座標(y) */
+  --9t-max-scale: 3;  /* 矢印が最大時の拡大率 */
+}
+
+/* ヒット時のエフェクトがズレないようにする */
+.step9t div[id^="stepHit"] {
+  top: -10px !important;
+}
+
+/* ステップゾーンとノーツの表示位置 */
+#stepRoot0.step9t, .arrow9t[id^="arrow0_"], .arrow9t-rev[id^="arrow0_"] { top: calc(var(--9t-center-y) - 150px) !important; left: calc(var(--9t-center-x) - 100px) !important; }
+#stepRoot1.step9t, .arrow9t[id^="arrow1_"], .arrow9t-rev[id^="arrow1_"] { top: calc(var(--9t-center-y) - 150px) !important; left: calc(var(--9t-center-x) -   0px) !important; }
+#stepRoot2.step9t, .arrow9t[id^="arrow2_"], .arrow9t-rev[id^="arrow2_"] { top: calc(var(--9t-center-y) - 150px) !important; left: calc(var(--9t-center-x) + 100px) !important; }
+#stepRoot3.step9t, .arrow9t[id^="arrow3_"], .arrow9t-rev[id^="arrow3_"] { top: calc(var(--9t-center-y) -  50px) !important; left: calc(var(--9t-center-x) - 100px) !important; }
+#stepRoot4.step9t, .arrow9t[id^="arrow4_"], .arrow9t-rev[id^="arrow4_"] { top: calc(var(--9t-center-y) -  50px) !important; left: calc(var(--9t-center-x) -   0px) !important; }
+#stepRoot5.step9t, .arrow9t[id^="arrow5_"], .arrow9t-rev[id^="arrow5_"] { top: calc(var(--9t-center-y) -  50px) !important; left: calc(var(--9t-center-x) + 100px) !important; }
+#stepRoot6.step9t, .arrow9t[id^="arrow6_"], .arrow9t-rev[id^="arrow6_"] { top: calc(var(--9t-center-y) +  50px) !important; left: calc(var(--9t-center-x) - 100px) !important; }
+#stepRoot7.step9t, .arrow9t[id^="arrow7_"], .arrow9t-rev[id^="arrow7_"] { top: calc(var(--9t-center-y) +  50px) !important; left: calc(var(--9t-center-x) -   0px) !important; }
+#stepRoot8.step9t, .arrow9t[id^="arrow8_"], .arrow9t-rev[id^="arrow8_"] { top: calc(var(--9t-center-y) +  50px) !important; left: calc(var(--9t-center-x) + 100px) !important; }
+
+/* リバースなしのアニメーション設定 */
+.arrow9t {
+  animation-name: scale-9t;
+  animation-timing-function: linear, step-end;
+  animation-fill-mode: forwards;
+  opacity: 1;
+}
+
+@keyframes scale-9t {
+  0% {
+    transform: scale(var(--9t-max-scale));
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* リバースありのアニメーション設定 */
+.arrow9t-rev {
+  animation-name: scale-9t-rev;
+  animation-timing-function: linear, step-end;
+  animation-fill-mode: forwards;
+  opacity: 1;
+}
+
+@keyframes scale-9t-rev {
+  0% {
+    transform: scale(0);
+  }
+
+  100% {
+    transform: scale(2);
+  }
+}
